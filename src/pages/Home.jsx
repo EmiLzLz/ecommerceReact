@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 function Home() {
   return (
     <div>
-      <Header />
       <div className="banner"></div>
       <main>
         <div className="products-categoriess">
@@ -15,7 +14,6 @@ function Home() {
           <div className="category-4"></div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
