@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import Cart from "./Cart";
+import FavProducts from "./FavProducts";
 
 function Menu() {
+  const [showCart, setShowCart] = useState(false);
+  const [showFavs, setShowFavs] = useState(false);
+
+  const toggleCart = () => {
+    setShowCart(!showCart);
+  };
+
+  const toggleFavs = () => {
+    setShowFavs(!showFavs);
+  };
+
   return (
     <nav>
       <div className="app-sections">
@@ -9,10 +22,13 @@ function Menu() {
       </div>
 
       <div className="app-actions">
-        <a href="#">Cart</a>
+        <button onClick={toggleCart}>YOUR CART</button>
         <a href="#">Your favs</a>
         <a href="#">Your account</a>
       </div>
+
+      { showCart && <Cart /> }
+      { showFavs && <FavProducts /> }
     </nav>
   );
 }

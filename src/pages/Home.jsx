@@ -3,6 +3,7 @@ import ProductSlider from "../components/ProductSlider";
 import Cart from "../components/Cart";
 
 function Home() {
+
   return (
     <div>
       <div className="banner"></div>
@@ -38,8 +39,6 @@ function Home() {
           </div>
         </div>
       </main>
-      <h2>CART PRODUCTS</h2>
-      <Cart/>
     </div>
   );
 }

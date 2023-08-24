@@ -8,31 +8,26 @@ function ProductSlider({ category }) {
 
   return (
     <div>
-      <ul>
-        {products.map((product) => (
-          <div key={product.id} className="product-card">
-            <div className="card-head">
-              <div className="product-img">
-                <img src="" alt="" />
-              </div>
-              <button>FAV</button>
+      {products.map((product) => (
+        <div key={product.id} className="product-card">
+          <div className="card-head">
+            <div className="product-img">
+              <img src="" alt="" />
             </div>
-            <div className="card-body">
-              <div className="product-description">
-                <p>{product.title}</p>
-                <h3>${product.price}</h3>
-                <p>{product.description}</p>
-                <div className="actions">
-                  <button>VIEW</button>
-                  <button onClick={() => addToCart(product)}>
-                    ADD TO CART
-                  </button>
-                </div>
+            <button>FAV</button>
+          </div>
+          <div className="card-body">
+            <div className="product-description">
+              <p>{product.title}</p>
+              <h3>${product.price}</h3>
+              <div className="actions">
+                <button>VIEW</button>
+                <button onClick={() => addToCart(product)}>ADD TO CART</button>
               </div>
             </div>
           </div>
-        ))}
-      </ul>
+        </div>
+      ))}
     </div>
   );
 }
