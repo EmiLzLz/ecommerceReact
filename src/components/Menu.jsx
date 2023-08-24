@@ -23,7 +23,7 @@ function Menu() {
 
       <div className="app-actions">
         <button onClick={toggleCart}>YOUR CART</button>
-        <a href="#">Your favs</a>
+        <button onClick={toggleFavs}>YOUR FAVS</button>
         <a href="#">Your account</a>
       </div>
 

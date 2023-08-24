@@ -2,7 +2,7 @@ import React from "react";
 import { useApi } from "../context/ApiContext";
 
 function ProductSlider({ category }) {
-  const { getProductsByCategory, addToCart } = useApi();
+  const { getProductsByCategory, addToCart, addToFavs } = useApi();
 
   const products = getProductsByCategory(category);
 
@@ -14,7 +14,7 @@ function ProductSlider({ category }) {
             <div className="product-img">
               <img src="" alt="" />
             </div>
-            <button>FAV</button>
+            <button onClick={() => addToFavs(product)}>FAV</button>
           </div>
           <div className="card-body">
             <div className="product-description">
