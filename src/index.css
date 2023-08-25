@@ -4,3 +4,11 @@
     right: 0;
     background-color: aqua;
 }
+
+.fav-btn{
+    background-color: gray;
+}
+
+.fav-btn-active{
+    background-color: gold;
+}

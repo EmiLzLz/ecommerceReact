@@ -14,7 +14,7 @@ function ProductSlider({ category }) {
             <div className="product-img">
               <img src="" alt="" />
             </div>
-            <button onClick={() => addToFavs(product)}>FAV</button>
+            <button className={`${product.isInFavs ? "fav-btn-active" : "fav-btn"}`} onClick={() => addToFavs(product)}>FAV</button>
           </div>
           <div className="card-body">
             <div className="product-description">

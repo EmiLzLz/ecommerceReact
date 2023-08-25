@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Cart from "./Cart";
 import FavProducts from "./FavProducts";
+import { Link } from "react-router-dom";
 
 function Menu() {
   const [showCart, setShowCart] = useState(false);
@@ -17,8 +18,8 @@ function Menu() {
   return (
     <nav>
       <div className="app-sections">
-        <a href="#">Home</a>
-        <a href="#">About</a>
+        <Link to={"/"} >Home</Link>
+        <Link to={"/about"} >About</Link>
       </div>
 
       <div className="app-actions">

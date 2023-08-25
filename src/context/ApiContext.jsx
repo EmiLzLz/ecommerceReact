@@ -26,19 +26,24 @@ function ApiProvider({ children }) {
     // Initialize cart state from local storage
     const cartProducts = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(cartProducts);
-
   }, []); // Only run this effect on component mount
 
   useEffect(() => {
     // Initialize cart state from local storage
     const favProducts = JSON.parse(localStorage.getItem("favs")) || [];
     setFavs(favProducts);
-
   }, []); // Only run this effect on component mount
 
   // get products by category
   const getProductsByCategory = (category) => {
-    return products.filter((product) => product.category === category);
+
+    /* map products and add the isInFavs property.
+    favs.some check if the product is in the favs array, to change isInFavs to true.
+    */
+    return products.map((product) => ({
+      ...product,
+      isInFavs: favs.some((fav) => fav.id === product.id),
+    })).filter((product) => product.category === category);
   };
 
   const addToCart = (product) => {
@@ -59,24 +64,17 @@ function ApiProvider({ children }) {
     }
   };
 
-  //TODO Change to addecuate function to FavProducts component
   const addToFavs = (product) => {
-    // Check if the product is already in the cart
-    const productIndex = favs.findIndex((p) => p.id === product.id);
+    // Check if the product is already in favorites
+    const isAlreadyInFavs = favs.some((p) => p.id === product.id);
 
-    if (productIndex === -1) {
-      // Product is not in the cart, add it with quantity 1
+    if (!isAlreadyInFavs) {
+      // Product is not in favorites, add it
       const updatedFavs = [...favs, { ...product }];
       setFavs(updatedFavs);
       localStorage.setItem("favs", JSON.stringify(updatedFavs));
-    } else {
-      // Product is already in the cart, increment its quantity
-      const updatedFavs = [...favs];
-      updatedFavs[productIndex];
-      setFavs(updatedFavs);
-      localStorage.setItem("favs", JSON.stringify(updatedFavs));
     }
-  }
+  };
 
   const removeFromCart = (productId) => {
     //remove the element
@@ -96,7 +94,7 @@ function ApiProvider({ children }) {
     localStorage.setItem("favs", JSON.stringify(updatedFavs));
 
     return { ...favs, updatedFavs };
-  }
+  };
 
   const removeAllFromCart = () => {
     setCart(initialState);
@@ -108,7 +106,7 @@ function ApiProvider({ children }) {
     setFavs(initialState);
     localStorage.setItem("favs", JSON.stringify(initialState));
     return favs;
-  }
+  };
 
   const updateProductQuantity = (productId, quantityChange) => {
     const updatedCart = cart.map((cartProduct) => {
@@ -137,7 +135,7 @@ function ApiProvider({ children }) {
     removeAFav,
     removeAllFromCart,
     removeAllFavs,
-    updateProductQuantity,  
+    updateProductQuantity,
   };
 
   return (
