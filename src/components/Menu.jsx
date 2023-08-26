@@ -17,15 +17,15 @@ function Menu() {
   };
 
   return (
-    <nav>
-      <div className="app-sections">
-        <Link to={"/"} >Home</Link>
-        <Link to={"/about"} >About</Link>
+    <nav className="sections-actions flex items-center justify-center gap-16">
+      <div className="app-sections flex items-center gap-6">
+        <Link to={"/"} className="text-regular" >Home</Link>
+        <Link to={"/about"} className="text-regular" >About</Link>
       </div>
 
-      <div className="app-actions">
-        <button onClick={toggleCart}>YOUR CART</button>
-        <button onClick={toggleFavs}>YOUR FAVS</button>
+      <div className="app-actions w-32 py-1 bg-[#0D0A0B] flex items-center justify-around rounded-full">
+        <button onClick={toggleCart}><Icon icon="icomoon-free:cart" style={{ fontSize: "30px", color: "white" }} /></button>
+        <button onClick={toggleFavs}><Icon icon="material-symbols:favorite" style={{ fontSize: "30px", color: "white" }} /></button>
       </div>
 
       { showCart && <Cart /> }

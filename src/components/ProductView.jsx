@@ -26,9 +26,9 @@ function ProductView({ closeModal, product }) {
               <p className="text-regular font-medium">{product.rating.rate}</p>
             </div>
           </div>
-          <div className="actions">
-            <button>ADD TO FAVS</button>
-            <button>ADD TO CART</button>
+          <div className="actions flex items-center gap-8">
+            <button><Icon icon="material-symbols:favorite" style={{ fontSize: "30px", color: "#610F7F" }} /></button>
+            <button><Icon icon="icomoon-free:cart" style={{ fontSize: "30px", color: "#610F7F" }} /></button>
           </div>
         </div>
       </div>

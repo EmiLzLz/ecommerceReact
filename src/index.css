@@ -11,6 +11,10 @@
 #C52233
 */
 
+a{
+  color: #610F7F;
+}
+
 h1,
 h2,
 h3 {
@@ -26,6 +30,7 @@ a {
   background-image: url("../src/assets/images/banner2.jpg");
   background-position: center center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .about-info .image,
@@ -36,6 +41,17 @@ a {
 
 .banner {
   height: 270px;
+  filter: brightness(95%);
+}
+
+.banner-description h2,
+.banner-description p,
+.banner-description a{
+  text-shadow: rgba(0, 0, 0, 0.801) 0em 0em 0.5em
+}
+
+button:active{
+  animation: animateButtons 0.4s linear;
 }
 
 .cart,
@@ -46,6 +62,12 @@ a {
   background-color: aqua;
 }
 
+.category-img{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
 .fav-btn {
   background-color: gray;
 }
@@ -54,10 +76,15 @@ a {
   background-color: gold;
 }
 
-.home-banner {
+.home .banner {
   background-image: url("../src/assets/images/banner1.jpg");
   background-position: center center;
   background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.mediumText{
+  font-size: 18px;
 }
 
 .modal {
@@ -115,14 +142,8 @@ a {
   padding: 50px 8px;
 }
 
-.title-1 {
-  font-size: 45px;
-  font-weight: bold;
-}
-
-.title-2 {
-  font-size: 35px;
-  font-weight: bold;
+.smallText {
+  font-size: 16px;
 }
 
 .subtitle {
@@ -134,9 +155,22 @@ a {
   font-size: 20px;
 }
 
-.text-medium {
+.title-1 {
+  font-size: 45px;
+  font-weight: bold;
 }
 
-.smallText {
-  font-size: 16px;
+.title-2 {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/* Animations */
+@keyframes animateButtons{
+  0%{transform: scale(1);}
+  20%{transform: scale(0.8);}
+  40%{transform: scale(1.2);}
+  60%{transform: scale(0.9);}
+  80%{transform: scale(1.1);}
+  100%{transform: scale(1);}
 }

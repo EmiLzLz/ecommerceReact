@@ -6,15 +6,15 @@ import aboutImg4 from "../assets/images/about-img-4.jpg";
 
 function About() {
   return (
-    <div className="about w-full">
+    <div className="about w-full bg-[#F5F3F5]">
       <div className="banner w-full">
         <div className="banner-description p-6">
           <h2 className="title-2 text-white">BANNER TITLE</h2>
-          <p className="text-regular font-normal text-white">
+          <p className="text-regular font-medium text-white">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
             libero assumenda necessitatibus...
           </p>
-          <a href="javascript:void(0)" className="smallText font-medium text-white">View more</a>
+          <a href="javascript:void(0)" className="text-regular font-medium">View more</a>
         </div>        
       </div>
       <div className="about-container container mx-auto pt-16">
