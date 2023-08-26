@@ -41,7 +41,8 @@ function ProductSlider({ category }) {
       <Carousel
         responsive={responsive}
         swipeable={true}
-        draggable={true}
+        draggable={false}
+        removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
         showDots={true}
       >
         {products.map((product) => (

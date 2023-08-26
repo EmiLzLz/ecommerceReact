@@ -2,10 +2,23 @@ import React from "react";
 import ProductSlider from "../components/ProductSlider";
 
 function Home() {
-
   return (
     <div className="home">
-      <div className="banner w-100 h-2/5 border-red-600"></div>
+      <div className="banner w-100 border border-red-600">
+        <div className="banner-description p-6">
+          <h2 className="title-2 text-white">BANNER TITLE</h2>
+          <p className="text-regular font-normal text-white">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
+            libero assumenda necessitatibus...
+          </p>
+          <a
+            href="javascript:void(0)"
+            className="smallText font-medium text-white"
+          >
+            View more
+          </a>
+        </div>
+      </div>
       <main className="marketplace-products w-100">
         <div className="products-categories container mx-auto">
           <h1>WE HAVE WHAT YOUR ARE LOOKING FOR</h1>

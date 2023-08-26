@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Cart from "./Cart";
 import FavProducts from "./FavProducts";
 import { Link } from "react-router-dom";
+import { Icon } from '@iconify/react';
 
 function Menu() {
   const [showCart, setShowCart] = useState(false);

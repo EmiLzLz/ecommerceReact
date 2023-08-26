@@ -1,15 +1,16 @@
 import React from "react";
+import { Icon } from '@iconify/react';
 
 function ProductCard({ product, addToCart, addToFavs, handleViewClick }) {
   return (
     <>
-      <div className="product-card border border-red-600 rounded-lg overflow-hidden">
-        <div className="card-head">
-          <div className="product-img">
-            <img src="" alt="" />
+      <div className="product-card w-full border border-red-600 rounded-lg overflow-hidden">
+        <div className="card-head relative">
+          <div className="product-img w-full py-1 flex items-center justify-center">
+            <img src={product.image} alt=""  className=" h-full"/>
           </div>
           <button
-            className={`${product.isInFavs ? "fav-btn-active" : "fav-btn"}`}
+            className={`${product.isInFavs ? "fav-btn-active" : "fav-btn"} absolute top-0 right-0`}
             onClick={() => addToFavs(product)}
           >
             FAV
