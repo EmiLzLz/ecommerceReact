@@ -25,7 +25,6 @@ function Menu() {
       <div className="app-actions">
         <button onClick={toggleCart}>YOUR CART</button>
         <button onClick={toggleFavs}>YOUR FAVS</button>
-        <a href="#">Your account</a>
       </div>
 
       { showCart && <Cart /> }

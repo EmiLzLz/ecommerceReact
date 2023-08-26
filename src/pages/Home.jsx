@@ -1,39 +1,39 @@
 import React from "react";
 import ProductSlider from "../components/ProductSlider";
-import Cart from "../components/Cart";
 
 function Home() {
 
   return (
-    <div>
-      <div className="banner"></div>
-      <main>
-        <div className="products-categoriess">
-          <div className="category-1">
-            <div className="category-name-img">
+    <div className="home">
+      <div className="banner w-100 h-2/5 border-red-600"></div>
+      <main className="marketplace-products w-100">
+        <div className="products-categories container mx-auto">
+          <h1>WE HAVE WHAT YOUR ARE LOOKING FOR</h1>
+          <div className="category-1 w-100 flex items-center justify-between">
+            <div className="category-name-img w-56">
               <img src="" alt="" />
-              <h4>Category name</h4>
+              <h4>ELECTRONICS</h4>
             </div>
             <ProductSlider category={"electronics"} />
           </div>
-          <div className="category-2">
-            <div className="category-name-img">
+          <div className="category-2 w-100 flex items-center justify-between">
+            <div className="category-name-img w-56">
               <img src="" alt="" />
-              <h4>Category name</h4>
+              <h4>JEWELERY</h4>
             </div>
             <ProductSlider category={"jewelery"} />
           </div>
-          <div className="category-3">
-            <div className="category-name-img">
+          <div className="category-3 w-100 flex items-center justify-between">
+            <div className="category-name-img w-60">
               <img src="" alt="" />
-              <h4>Category name</h4>
+              <h4>MENS</h4>
             </div>
             <ProductSlider category={"men's clothing"} />
           </div>
-          <div className="category-4">
-            <div className="category-name-img">
+          <div className="category-4 w-100 flex items-center justify-between">
+            <div className="category-name-img w-60">
               <img src="" alt="" />
-              <h4>Category name</h4>
+              <h4>WOMENS</h4>
             </div>
             <ProductSlider category={"women's clothing"} />
           </div>

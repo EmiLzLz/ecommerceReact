@@ -42,8 +42,8 @@ function Cart() {
   }, [cart]);
 
   return (
-    <div className="cart">
-      <div className="cart-container">
+    <div className="cart w-100 h-100">
+      <div className="cart-container container">
         <div className="cart-body">
           <div className="cart-products">
             {cart.map((cartProduct) => (

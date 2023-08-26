@@ -3,6 +3,9 @@ import { useApi } from "../context/ApiContext";
 import Modal from "./Modal";
 import ProductView from "./ProductView";
 import { useModal } from "../hooks/useModal";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import ProductCard from "./ProductCard";
 
 function ProductSlider({ category }) {
   const { getProductsByCategory, addToCart, addToFavs } = useApi();
@@ -15,38 +18,47 @@ function ProductSlider({ category }) {
     setSelectedProduct(product);
   };
 
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3, // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2, // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+  };
+
   return (
-    <div>
-      {products.map((product) => (
-        <div key={product.id} className="product-card">
-          <div className="card-head">
-            <div className="product-img">
-              <img src="" alt="" />
-            </div>
-            <button
-              className={`${product.isInFavs ? "fav-btn-active" : "fav-btn"}`}
-              onClick={() => addToFavs(product)}
-            >
-              FAV
-            </button>
-          </div>
-          <div className="card-body">
-            <div className="product-description">
-              <p>{product.title}</p>
-              <h3>${product.price}</h3>
-              <div className="actions">
-                <button onClick={() => handleViewClick(product)}>VIEW</button>
-                <button onClick={() => addToCart(product)}>ADD TO CART</button>
-              </div>
-            </div>
-          </div>
-          <Modal isOpen={isOpenModal} closeModal={closeModal}>
-            {selectedProduct && (
-              <ProductView closeModal={closeModal} product={selectedProduct} />
-            )}
-          </Modal>
-        </div>
-      ))}
+    <div className="products-slider">
+      <Carousel
+        responsive={responsive}
+        swipeable={true}
+        draggable={true}
+        showDots={true}
+      >
+        {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            handleViewClick={handleViewClick}
+            addToCart={addToCart}
+            addToFavs={addToFavs}
+          />
+        ))}
+      </Carousel>
+      <Modal isOpen={isOpenModal} closeModal={closeModal}>
+        {selectedProduct && (
+          <ProductView closeModal={closeModal} product={selectedProduct} />
+        )}
+      </Modal>
     </div>
   );
 }
