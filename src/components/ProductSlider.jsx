@@ -2,21 +2,22 @@ import React, { useState } from "react";
 import { useApi } from "../context/ApiContext";
 import Modal from "./Modal";
 import ProductView from "./ProductView";
-import { useModal } from "../hooks/useModal";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ProductCard from "./ProductCard";
+import { ToastContainer } from "react-toastify";
 
 function ProductSlider({ category }) {
-  const { getProductsByCategory, addToCart, addToFavs } = useApi();
-  const [isOpenModal, openModal, closeModal] = useModal(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const {
+    getProductsByCategory,
+    addToCart,
+    addToFavs,
+    selectedProduct,
+    openModal,
+    closeModal,
+    isOpen,
+  } = useApi();
   const products = getProductsByCategory(category);
-
-  const handleViewClick = (product) => {
-    openModal();
-    setSelectedProduct(product);
-  };
 
   const responsive = {
     desktop: {
@@ -49,17 +50,20 @@ function ProductSlider({ category }) {
           <ProductCard
             key={product.id}
             product={product}
-            handleViewClick={handleViewClick}
+            openModal={openModal}
             addToCart={addToCart}
             addToFavs={addToFavs}
           />
+          
         ))}
+       
       </Carousel>
-      <Modal isOpen={isOpenModal} closeModal={closeModal}>
+      <Modal isOpen={isOpen} closeModal={closeModal}>
         {selectedProduct && (
           <ProductView closeModal={closeModal} product={selectedProduct} />
         )}
       </Modal>
+      
     </div>
   );
 }

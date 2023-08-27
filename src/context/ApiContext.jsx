@@ -1,4 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ApiContext = createContext();
 
@@ -6,6 +8,8 @@ function ApiProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]); // to cart
   const [favs, setFavs] = useState([]); // to favs
+  const [selectedProduct, setSelectedProduct] = useState(null); // to modal
+  const [isOpen, setIsOpen] = useState(false); // to modal
   const initialState = [];
 
   useEffect(() => {
@@ -36,14 +40,15 @@ function ApiProvider({ children }) {
 
   // get products by category
   const getProductsByCategory = (category) => {
-
     /* map products and add the isInFavs property.
     favs.some check if the product is in the favs array, to change isInFavs to true.
     */
-    return products.map((product) => ({
-      ...product,
-      isInFavs: favs.some((fav) => fav.id === product.id),
-    })).filter((product) => product.category === category);
+    return products
+      .map((product) => ({
+        ...product,
+        isInFavs: favs.some((fav) => fav.id === product.id),
+      }))
+      .filter((product) => product.category === category);
   };
 
   const addToCart = (product) => {
@@ -73,6 +78,60 @@ function ApiProvider({ children }) {
       const updatedFavs = [...favs, { ...product }];
       setFavs(updatedFavs);
       localStorage.setItem("favs", JSON.stringify(updatedFavs));
+    }
+  };
+
+  const addAllFavsToCart = () => {
+    // Check if there are any products in favs
+    if (favs.length === 0) {
+      toast.warn("No favorite products to add to the cart.", {
+        // Toast configuration for the error message
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return; // Exit the function early if there are no favorite products
+    } else {
+      // copy of current cart
+      const updatedCart = [...cart];
+
+      // iterate productcs
+      favs.forEach((product) => {
+        // check if the product is already in the cart
+        const productIndex = updatedCart.findIndex((p) => p.id === product.id);
+
+        if (productIndex === -1) {
+          // product not in cart
+          updatedCart.push({ ...product, quantity: 1 });
+        } else {
+          // update quantity of product in cart
+          updatedCart[productIndex].quantity += 1;
+        }
+      });
+
+      // update cart state
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+      // clear favs array and localStorage
+      setFavs([]);
+      localStorage.removeItem("favs");
+
+      toast.success("All products send it to cart!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 
@@ -124,6 +183,15 @@ function ApiProvider({ children }) {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
+  const openModal = (product) => {
+    setSelectedProduct(product);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedProduct(null);
+    setIsOpen(false);
+  };
 
   // expose function
   const contextValue = {
@@ -137,6 +205,11 @@ function ApiProvider({ children }) {
     removeAllFromCart,
     removeAllFavs,
     updateProductQuantity,
+    selectedProduct,
+    openModal,
+    closeModal,
+    isOpen,
+    addAllFavsToCart,
   };
 
   return (

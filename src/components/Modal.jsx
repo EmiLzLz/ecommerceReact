@@ -1,6 +1,6 @@
 import React from "react";
 
-function Modal({ children, isOpen, closeModal }) {
+function Modal({ children, closeModal, isOpen }) {
   return (
     <article className={`modal ${isOpen && "isOpen"}`} onClick={closeModal}>
       {children}

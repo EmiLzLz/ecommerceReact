@@ -21,7 +21,7 @@ function ProductView({ closeModal, product }) {
         </button>
       </div>
       <div className="product-view-card-content w-full p-4 flex items-center justify-center">
-        <div className="product-view-img w-full h-96 flex items-center justify-center">
+        <div className="product-view-img px-6 w-full h-96 flex items-center justify-center">
           <img src={image} alt={title} className="h-full" />
         </div>
         <div className="product-info w-full h-full">

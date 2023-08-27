@@ -1,11 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { useApi } from "../context/ApiContext";
 import { Icon } from "@iconify/react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ProductsInCart from "./ProductsInCart";
 
 function Cart() {
   const { cart, removeFromCart, removeAllFromCart, updateProductQuantity } =
     useApi();
   const [total, setTotal] = useState(0);
+  const notify = () => {
+    if (total === 0) {
+      toast.warn("There are no products to checkout.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    } else {
+      toast.success("Products sent it to checkout section!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  };
 
   const handleAdd = (productId) => {
     updateProductQuantity(productId, 1);
@@ -45,50 +74,13 @@ function Cart() {
     <div className="cart w-full">
       <div className="cart-container container mx-auto w-full h-full flex justify-end border border-red-500">
         <div className="cart-body bg-white h-4/5 p-4 rounded-lg flex flex-col items-center justify-between">
-          <div className="cart-products w-full overflow-y-scroll">
-            {cart.map((cartProduct) => (
-              <div
-                key={cartProduct.id}
-                className="cart-product flex items-center justify-between py-6 px-1"
-              >
-                <div className="product-cart-img flex justify-center">
-                  <img
-                    src={cartProduct.image}
-                    alt={cartProduct.title}
-                    className="h-full"
-                  />
-                </div>
-                <div className="product-cart-info px-2 w-full">
-                  <p className="smallText font-normal">{cartProduct.title}</p>
-                  <p className="mediumText font-medium">${cartProduct.price}</p>
-                  <div className="addMore flex items-center gap-4">
-                    <button onClick={() => handleRemove(cartProduct.id)}>
-                      <Icon
-                        icon="pepicons-pencil:line-x"
-                        style={{ fontSize: "20px", color: "#610F7F" }}
-                      />
-                    </button>
-                    <p className="smallText font-medium text-[#610F7F]">
-                      {cartProduct.quantity}
-                    </p>
-                    <button onClick={() => handleAdd(cartProduct.id)}>
-                      <Icon
-                        icon="clarity:add-line"
-                        style={{ fontSize: "20px", color: "#610F7F" }}
-                      />
-                    </button>
-                  </div>
-                </div>
-                <button onClick={() => handleRemoveFromCart(cartProduct.id)}>
-                  <Icon
-                    icon="mdi:close-box"
-                    style={{ fontSize: "30px", color: "#C52233" }}
-                  />
-                </button>
-              </div>
-            ))}
-          </div>
-
+          //!code
+          <ProductsInCart
+            cart={cart}
+            handleAdd={handleAdd}
+            handleRemove={handleRemove}
+            handleRemoveFromCart={handleRemoveFromCart}
+          />
           <div className="cart-actions w-full flex flex-col items-center">
             <div className="cart-total w-full flex items-center justify-between py-8">
               <div className="total-number flex items-center justify-start gap-4">
@@ -104,7 +96,13 @@ function Cart() {
                 </button>
               </div>
             </div>
-            <button className="checkout-btn rounded-lg mediumText font-medium">Checkout</button>
+            <button
+              onClick={notify}
+              className="checkout-btn rounded-lg mediumText font-medium"
+            >
+              Checkout
+            </button>
+            <ToastContainer />
           </div>
         </div>
       </div>

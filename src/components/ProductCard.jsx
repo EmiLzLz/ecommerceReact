@@ -1,7 +1,8 @@
 import React from "react";
 import { Icon } from '@iconify/react';
 
-function ProductCard({ product, addToCart, addToFavs, handleViewClick }) {
+
+function ProductCard({ product, addToCart, addToFavs, openModal }) {
   return (
     <>
       <div className="product-card w-full border border-red-600 rounded-lg overflow-hidden bg-white">
@@ -23,8 +24,9 @@ function ProductCard({ product, addToCart, addToFavs, handleViewClick }) {
             </p>
             <h3 className="mediumText font-medium">${product.price}</h3>
             <div className="actions pt-10 w-full flex items-center justify-start gap-8">
-              <button onClick={() => handleViewClick(product)}><Icon icon="carbon:view-filled" style={{ fontSize: "30px", color: "#610F7F" }} /></button>
+              <button onClick={() => openModal(product)}><Icon icon="carbon:view-filled" style={{ fontSize: "30px", color: "#610F7F" }} /></button>
               <button onClick={() => addToCart(product)}><Icon icon="icomoon-free:cart" style={{ fontSize: "30px", color: "#610F7F" }} /></button>
+              
             </div>
           </div>
         </div>
