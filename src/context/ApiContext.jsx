@@ -4,8 +4,8 @@ const ApiContext = createContext();
 
 function ApiProvider({ children }) {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [favs, setFavs] = useState([]);
+  const [cart, setCart] = useState([]); // to cart
+  const [favs, setFavs] = useState([]); // to favs
   const initialState = [];
 
   useEffect(() => {
@@ -123,6 +123,7 @@ function ApiProvider({ children }) {
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
+
 
   // expose function
   const contextValue = {

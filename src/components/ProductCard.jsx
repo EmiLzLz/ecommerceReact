@@ -10,10 +10,10 @@ function ProductCard({ product, addToCart, addToFavs, handleViewClick }) {
             <img src={product.image} alt=""  className=" h-full"/>
           </div>
           <button
-            className={`${product.isInFavs ? "fav-btn-active" : "fav-btn"} absolute top-0 right-0`}
+            className="absolute top-0 right-0 p-2"
             onClick={() => addToFavs(product)}
           >
-            <Icon icon="material-symbols:favorite" style={{ fontSize: "30px" }} />
+            <Icon className={`${product.isInFavs ? "fav-btn-active" : "fav-btn"}`} icon="material-symbols:favorite" />
           </button>
         </div>
         <div className="card-body p-2">

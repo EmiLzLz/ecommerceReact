@@ -54,12 +54,26 @@ button:active{
   animation: animateButtons 0.4s linear;
 }
 
+.cart-body,
+.fav-body{
+  width: 500px;
+}
+
+.cart-products,
+.fav-products{
+  height: 400px;
+}
+
 .cart,
 .favs {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
-  background-color: aqua;
+  bottom: 0;
+  top: 109px;
+  background-color: rgba(0, 0, 0, 0.219);
+  z-index: 99;
+  height: 90vh;
 }
 
 .category-img{
@@ -68,12 +82,22 @@ button:active{
   border-radius: 50%;
 }
 
+.checkout-btn,
+.addAll-btn{
+  width: 40%;
+  padding: 7px 0px;
+  background-color: #81E979;
+}
+
 .fav-btn {
-  background-color: gray;
+  color: gray;
+  font-size: 36px;
 }
 
 .fav-btn-active {
-  background-color: gold;
+  color: #E06C9F !important;
+  font-size: 36px;
+
 }
 
 .home .banner {
@@ -91,6 +115,8 @@ button:active{
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 999 !important;
   width: 100%;
   min-height: 100vh;
@@ -114,10 +140,16 @@ button:active{
 }
 
 .product-card:hover {
-  -webkit-box-shadow: 0px 8px 4px 3px rgba(0, 0, 0, 0.42);
-  -moz-box-shadow: 0px 8px 4px 3px rgba(0, 0, 0, 0.42);
-  box-shadow: 0px 8px 4px 3px rgba(0, 0, 0, 0.42);
+  -webkit-box-shadow: 0px 11px 14px -3px rgba(0,0,0,0.45);
+-moz-box-shadow: 0px 11px 14px -3px rgba(0,0,0,0.45);
+box-shadow: 0px 11px 14px -3px rgba(0,0,0,0.45);
   transform: translateY(-8px);
+}
+
+.product-cart-img,
+.product-fav-img{
+  width: 80px;
+  height: 80px;
 }
 
 .product-img {
@@ -163,6 +195,12 @@ button:active{
 .title-2 {
   font-size: 35px;
   font-weight: bold;
+}
+
+.unmark-btn{
+  border: solid 1px #610F7F;
+  width: 40%;
+  padding: 7px 0px;
 }
 
 /* Animations */

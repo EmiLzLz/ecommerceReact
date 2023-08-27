@@ -1,14 +1,23 @@
 import React from "react";
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
+import { useApi } from "../context/ApiContext";
 
 function ProductView({ closeModal, product }) {
-  const {title, description, image} = product
+  const { addToFavs, addToCart } = useApi();
+  const { title, description, image } = product;
   const handleModalContainerClick = (e) => e.stopPropagation();
+
   return (
-    <div className="product-view-card rounded-lg bg-white flex flex-col items-center justify-start" onClick={handleModalContainerClick}>
-      <div className="close-card py-8">
+    <div
+      className="product-view-card rounded-lg bg-white flex flex-col items-center justify-start"
+      onClick={handleModalContainerClick}
+    >
+      <div className="close-card w-full py-4 px-4 text-right">
         <button onClick={closeModal} className="close-view">
-          CLOSE CARD
+          <Icon
+            icon="mdi:close-box"
+            style={{ fontSize: "40px", color: "#C52233" }}
+          />
         </button>
       </div>
       <div className="product-view-card-content w-full p-4 flex items-center justify-center">
@@ -27,8 +36,18 @@ function ProductView({ closeModal, product }) {
             </div>
           </div>
           <div className="actions flex items-center gap-8">
-            <button><Icon icon="material-symbols:favorite" style={{ fontSize: "30px", color: "#610F7F" }} /></button>
-            <button><Icon icon="icomoon-free:cart" style={{ fontSize: "30px", color: "#610F7F" }} /></button>
+            <button onClick={() => addToFavs(product)}>
+              <Icon
+                icon="material-symbols:favorite"
+                style={{ fontSize: "30px", color: "#610F7F" }}
+              />
+            </button>
+            <button onClick={() => addToCart(product)} >
+              <Icon
+                icon="icomoon-free:cart"
+                style={{ fontSize: "30px", color: "#610F7F" }}
+              />
+            </button>
           </div>
         </div>
       </div>

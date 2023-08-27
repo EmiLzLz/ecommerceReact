@@ -23,7 +23,7 @@ function Menu() {
         <Link to={"/about"} className="text-regular" >About</Link>
       </div>
 
-      <div className="app-actions w-32 py-1 bg-[#0D0A0B] flex items-center justify-around rounded-full">
+      <div className="app-actions w-32 py-2 bg-[#0D0A0B] flex items-center justify-around rounded-full">
         <button onClick={toggleCart}><Icon icon="icomoon-free:cart" style={{ fontSize: "30px", color: "white" }} /></button>
         <button onClick={toggleFavs}><Icon icon="material-symbols:favorite" style={{ fontSize: "30px", color: "white" }} /></button>
       </div>
