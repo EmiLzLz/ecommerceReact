@@ -324,6 +324,7 @@ button:active {
     color: white;
     background-color: #0d0a0b79;
     backdrop-filter: blur(10px);
+    animation: animateModal 0.4s linear;
   }
 
   .menu.mobile-open .menu-options {
