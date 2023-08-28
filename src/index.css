@@ -285,6 +285,7 @@ button:active {
 
 @media screen and (max-width: 650px) {
   .about-container,
+  .banner-container,
   .marketplace-products,
   .footer .container {
     padding-left: 8px;
