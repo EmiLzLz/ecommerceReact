@@ -229,7 +229,7 @@ button:active {
 }
 
 .menu .menu-options {
-  display: flex; /* Display the options */
+  display: flex;
 }
 
 @media screen and (max-width: 1030px) {
