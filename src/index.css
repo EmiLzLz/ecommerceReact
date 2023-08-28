@@ -2,17 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-#0D0A0B
-#FFCA3A
-#81E979
-#610F7F
-#F5F3F5
-#C52233
-*/
-
-a{
-  color: #610F7F;
+a {
+  color: #610f7f;
 }
 
 h1,
@@ -46,21 +37,22 @@ a {
 
 .banner-description h2,
 .banner-description p,
-.banner-description a{
-  text-shadow: rgba(0, 0, 0, 0.801) 0em 0em 0.5em
+.banner-description a {
+  text-shadow: rgba(0, 0, 0, 0.801) 0em 0em 0.5em;
 }
 
-button:active{
-  animation: animateButtons 0.4s linear;
+button:active {
+  animation: animatePop 0.4s linear;
 }
 
 .cart-body,
-.fav-body{
+.fav-body {
   width: 500px;
+  animation: animateModal 0.5s ease-in-out;
 }
 
 .cart-products,
-.fav-products{
+.fav-products {
   height: 400px;
 }
 
@@ -76,17 +68,17 @@ button:active{
   height: 100vh;
 }
 
-.category-img{
+.category-img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
 }
 
 .checkout-btn,
-.addAll-btn{
+.addAll-btn {
   width: 40%;
   padding: 7px 0px;
-  background-color: #81E979;
+  background-color: #81e979;
 }
 
 .fav-btn {
@@ -95,9 +87,8 @@ button:active{
 }
 
 .fav-btn-active {
-  color: #E06C9F !important;
+  color: #e06c9f !important;
   font-size: 36px;
-
 }
 
 .home .banner {
@@ -107,7 +98,7 @@ button:active{
   background-repeat: no-repeat;
 }
 
-.mediumText{
+.mediumText {
   font-size: 18px;
 }
 
@@ -131,7 +122,7 @@ button:active{
 }
 
 .product-card {
-  width: 280px;
+  width: 80% !important;
   height: 310px;
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -140,14 +131,14 @@ button:active{
 }
 
 .product-card:hover {
-  -webkit-box-shadow: 0px 11px 14px -3px rgba(0,0,0,0.45);
--moz-box-shadow: 0px 11px 14px -3px rgba(0,0,0,0.45);
-box-shadow: 0px 11px 14px -3px rgba(0,0,0,0.45);
+  -webkit-box-shadow: 0px 11px 14px -3px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 0px 11px 14px -3px rgba(0, 0, 0, 0.45);
+  box-shadow: 0px 11px 14px -3px rgba(0, 0, 0, 0.45);
   transform: translateY(-8px);
 }
 
 .product-cart-img,
-.product-fav-img{
+.product-fav-img {
   width: 80px;
   height: 80px;
 }
@@ -168,6 +159,7 @@ box-shadow: 0px 11px 14px -3px rgba(0,0,0,0.45);
 .product-view-card {
   width: 80%;
   height: 600px;
+  animation: animateModal 0.4s linear;
 }
 
 .react-multi-carousel-track {
@@ -197,18 +189,239 @@ box-shadow: 0px 11px 14px -3px rgba(0,0,0,0.45);
   font-weight: bold;
 }
 
-.unmark-btn{
-  border: solid 1px #610F7F;
+.unmark-btn {
+  border: solid 1px #610f7f;
   width: 40%;
   padding: 7px 0px;
 }
 
 /* Animations */
-@keyframes animateButtons{
-  0%{transform: scale(1);}
-  20%{transform: scale(0.8);}
-  40%{transform: scale(1.2);}
-  60%{transform: scale(0.9);}
-  80%{transform: scale(1.1);}
-  100%{transform: scale(1);}
+@keyframes animatePop {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(0.8);
+  }
+  40% {
+    transform: scale(1.2);
+  }
+  60% {
+    transform: scale(0.9);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes animateModal{
+  from{
+    opacity: 0;
+    scale: 1.2;
+  }
+  to{
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.menu .menu-options {
+  display: flex; /* Display the options */
+}
+
+@media screen and (max-width: 1030px) {
+  .about-info-2 .images {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .category-1,
+  .category-2,
+  .category-3,
+  .category-4 {
+    flex-direction: column;
+    padding: 50px 0px;
+  }
+
+  .cart-container,
+  .favs-container {
+    justify-content: center;
+  }
+
+  .react-multi-carousel-item {
+    justify-content: center !important;
+  }
+
+  .category-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .product-card {
+    width: 220px;
+  }
+
+  .products-slider {
+    width: 100%;
+  }
+
+  .product-view-card,
+  .cart-body,
+  .fav-body {
+    width: 90%;
+    height: auto;
+  }
+
+  .text-regular {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .about-container,
+  .marketplace-products,
+  .footer .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .category-img {
+    width: 85px;
+    height: 85px;
+  }
+
+  .footer {
+    padding-bottom: 100px !important;
+  }
+
+  header {
+    padding: 20px 8px !important;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    background-color: white;
+  }
+
+  .mobile-button {
+    display: flex;
+  }
+
+  .menu .menu-options {
+    display: none;
+    position: fixed;
+    flex-direction: column;
+    border-radius: 13px;
+    right: 20px;
+    bottom: 80px;
+    width: 300px;
+    height: 70%;
+    color: white;
+    background-color: #0d0a0b79;
+    backdrop-filter: blur(10px);
+  }
+
+  .menu.mobile-open .menu-options {
+    display: flex;
+    gap: 50px;
+  }
+
+  .menu-options .app-sections,
+  .menu-options .app-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .menu-options .app-sections a{
+    color: white;
+    padding: 8px 0px;
+  }
+
+  .menu-options .app-actions{
+    border-radius: 0%;
+    background-color: transparent;
+  }
+
+  .menu-options .app-actions button{
+    padding: 8px 0px;
+  }
+
+  .product-description .actions {
+    justify-content: end;
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .product-view-card {
+    height: 800px;
+  }
+
+  .product-view-card-content {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+  }
+
+  .product-view-img {
+    height: 200px;
+  }
+
+  .react-multi-carousel-item {
+    justify-content: center;
+  }
+
+  .text-regular {
+    font-size: 17px;
+  }
+
+  .title-1 {
+    font-size: 20px;
+  }
+
+  .title-2,
+  .subtitle {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .about-info .image,
+  .about-info-3 .image {
+    height: 180px;
+  }
+
+  .banner-description {
+    padding: 10px;
+    height: 100%;
+  }
+
+  .checkout-btn,
+  .addAll-btn,
+  .unmark-btn {
+    width: 100%;
+  }
+
+  .footer .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .menu .menu-options{
+    width: 90%;
+  }
+
+  .smallText {
+    font-size: 16px;
+  }
 }

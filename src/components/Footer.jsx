@@ -15,14 +15,14 @@ function Footer() {
               icon="mdi:github"
               style={{ fontSize: "24px", color: "#610F7F" }}
             />
-            <a href="https://github.com/EmiLzLz">Github</a>
+            <a target="_blank" href="https://github.com/EmiLzLz">Github</a>
           </div>
           <div className="linkedin-link flex items-center">
           <Icon
               icon="bi:linkedin"
               style={{ fontSize: "22px", color: "#610F7F" }}
             />
-            <a href="https://www.linkedin.com/in/emiliano-lopez-lopez">
+            <a target="_blank" href="https://www.linkedin.com/in/emiliano-lopez-lopez">
               Linkedin
             </a>
           </div>

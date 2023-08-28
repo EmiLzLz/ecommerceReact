@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react';
 function ProductCard({ product, addToCart, addToFavs, openModal }) {
   return (
     <>
-      <div className="product-card w-full border border-red-600 rounded-lg overflow-hidden bg-white">
+      <div className="product-card w-full border rounded-lg overflow-hidden bg-white">
         <div className="card-head relative">
           <div className="product-img w-full py-1 flex items-center justify-center">
             <img src={product.image} alt=""  className=" h-full"/>

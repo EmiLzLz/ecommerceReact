@@ -93,7 +93,7 @@ function ApiProvider({ children }) {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: "dark",
       });
       return; // Exit the function early if there are no favorite products
     } else {
@@ -130,7 +130,7 @@ function ApiProvider({ children }) {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: "dark",
       });
     }
   };

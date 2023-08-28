@@ -25,17 +25,17 @@ function ProductView({ closeModal, product }) {
           <img src={image} alt={title} className="h-full" />
         </div>
         <div className="product-info w-full h-full">
-          <div className="description">
+          <div className="description text-center md:text-left">
             <h3 className="subtitle">{title}</h3>
             <p className="product-description text-regular font-normal">
               {description}
             </p>
-            <div className="product-rate flex w-full items-center justify-start py-6 gap-4">
+            <div className="product-rate flex w-full items-center justify-center md:justify-start py-6 gap-4">
               <p className="text-regular font-normal">Rate: </p>
               <p className="text-regular font-medium">{product.rating.rate}</p>
             </div>
           </div>
-          <div className="actions flex items-center gap-8">
+          <div className="actions flex items-center justify-center md:justify-start  gap-8">
             <button onClick={() => addToFavs(product)}>
               <Icon
                 icon="material-symbols:favorite"

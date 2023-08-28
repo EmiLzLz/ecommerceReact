@@ -19,7 +19,7 @@ function Cart() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: "dark",
       });
       return;
     } else {
@@ -31,7 +31,7 @@ function Cart() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: "dark",
       });
     }
   };
@@ -56,6 +56,8 @@ function Cart() {
     setTotal(0);
   };
 
+  const handleModalContainerClick = (e) => e.stopPropagation();
+
   useEffect(() => {
     let totalPay = 0;
 
@@ -71,39 +73,36 @@ function Cart() {
   }, [cart]);
 
   return (
-    <div className="cart w-full">
-      <div className="cart-container container mx-auto w-full h-full flex justify-end border border-red-500">
-        <div className="cart-body bg-white h-4/5 p-4 rounded-lg flex flex-col items-center justify-between">
-          //!code
-          <ProductsInCart
-            cart={cart}
-            handleAdd={handleAdd}
-            handleRemove={handleRemove}
-            handleRemoveFromCart={handleRemoveFromCart}
-          />
-          <div className="cart-actions w-full flex flex-col items-center">
-            <div className="cart-total w-full flex items-center justify-between py-8">
-              <div className="total-number flex items-center justify-start gap-4">
-                <p className="text-regular">TOTAL:</p>
-                <p className="text-regular font-medium">${total.toFixed(2)} </p>
-              </div>
-              <div className="deleteAll">
-                <button onClick={() => handleRemoveAllFromCart()}>
-                  <Icon
-                    icon="heroicons:trash-solid"
-                    style={{ fontSize: "30px", color: "#C52233" }}
-                  />
-                </button>
-              </div>
+    <div className="cart-container container mx-auto w-full h-full flex items-center justify-end">
+      <div onClick={handleModalContainerClick} className="cart-body bg-white h-4/5 p-4 rounded-lg flex flex-col items-center justify-between">
+        <ProductsInCart
+          cart={cart}
+          handleAdd={handleAdd}
+          handleRemove={handleRemove}
+          handleRemoveFromCart={handleRemoveFromCart}
+        />
+        <div className="cart-actions w-full flex flex-col items-center">
+          <div className="cart-total w-full flex items-center justify-between py-8">
+            <div className="total-number flex items-center justify-start gap-4">
+              <p className="text-regular">TOTAL:</p>
+              <p className="text-regular font-medium">${total.toFixed(2)} </p>
             </div>
-            <button
-              onClick={notify}
-              className="checkout-btn rounded-lg mediumText font-medium"
-            >
-              Checkout
-            </button>
-            <ToastContainer />
+            <div className="deleteAll">
+              <button onClick={() => handleRemoveAllFromCart()}>
+                <Icon
+                  icon="heroicons:trash-solid"
+                  style={{ fontSize: "30px", color: "#C52233" }}
+                />
+              </button>
+            </div>
           </div>
+          <button
+            onClick={notify}
+            className="checkout-btn rounded-lg mediumText font-medium"
+          >
+            Checkout
+          </button>
+          <ToastContainer />
         </div>
       </div>
     </div>

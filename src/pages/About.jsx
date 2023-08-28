@@ -14,12 +14,12 @@ function About() {
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem
             libero assumenda necessitatibus...
           </p>
-          <a href="javascript:void(0)" className="text-regular font-medium">View more</a>
+          <a href="#/about" className="text-regular font-medium">View more</a>
         </div>        
       </div>
       <div className="about-container container mx-auto pt-16">
         <div className="about-info pb-60">
-          <div className="description pb-8">
+          <div className="description pb-8 text-center md:text-left">
             <h1 className="title-1">ABOUT US</h1>
             <p className="text-regular font-normal">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
@@ -35,7 +35,7 @@ function About() {
             <img src={aboutImg1} alt="About us image 1" className="w-full h-full rounded-lg" />
           </div>
         </div>
-        <div className="about-info-2  pb-60">
+        <div className="about-info-2  pb-60 text-center md:text-left">
           <div className="description pb-8">
             <h3 className="subtitle">HOW WE WORK</h3>
             <p className="text-regular font-normal">
@@ -44,14 +44,14 @@ function About() {
               laudantium. Dolorum, vel, doloremque id maxime magnam quasi,
               debitis voluptatum aliquid iste impedit magni.
             </p>
-            <a href="javascript:void(0)" className="smallText font-medium">View more</a>
+            <a href="#/about" className="smallText font-medium">View more</a>
           </div>
           <div className="images w-full flex justify-around items-center rounded-lg">
             <img src={aboutImg2} alt="we work img 2" className="w-96 h-full rounded-lg" />
             <img src={aboutImg3} alt="we work img 3" className="w-96 h-full rounded-lg" />
           </div>
         </div>
-        <div className="about-info-3  pb-20">
+        <div className="about-info-3  pb-20 text-center md:text-left">
           <div className="description pb-8">
             <h3 className="subtitle">WE GROW UP</h3>
             <p className="text-regular font-normal">
@@ -60,7 +60,7 @@ function About() {
               laudantium. Dolorum, vel, doloremque id maxime magnam quasi,
               debitis voluptatum aliquid iste impedit magni.
             </p>
-            <a href="javascript:void(0)" className="smallText font-medium">View more</a>
+            <a href="#/about" className="smallText font-medium">View more</a>
           </div>
           <div className="image w-full overflow-hidden">
             <img src={aboutImg4} alt="about us image 4" className="w-full h-full rounded-lg"/>

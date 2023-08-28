@@ -16,7 +16,7 @@ function Home() {
             libero assumenda necessitatibus...
           </p>
           <a
-            href="javascript:void(0)"
+            href="#/"
             className="text-regular font-medium"
           >
             View more
@@ -25,7 +25,7 @@ function Home() {
       </div>
       <main className="marketplace-products w-100 py-24 bg-[#F5F3F5]">
         <div className="products-categories container mx-auto">
-          <h1 className="title-1">WE HAVE WHAT YOUR ARE LOOKING FOR</h1>
+          <h1 className="title-1 text-center md:text-left">WE HAVE WHAT YOUR ARE LOOKING FOR</h1>
           <div className="category-1 w-100 flex items-center justify-between relative">
             <div className="category-name-img w-60 flex flex-col items-center">
               <img src={categoryImg1} alt="electronics" className="category-img"  />
