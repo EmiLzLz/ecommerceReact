@@ -1,6 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { fetchProducsFromApi } from "../helpers/fetchApi";
+import { initializeCartProducts, initializeFavProducts } from "../helpers/localStorageFunctions"
 
 const ApiContext = createContext();
 
@@ -13,29 +15,26 @@ function ApiProvider({ children }) {
   const initialState = [];
 
   useEffect(() => {
-    try {
-      async function getData() {
-        const res = await fetch("https://fakestoreapi.com/products");
-        const data = await res.json();
+    async function fetchData() {
+      try {
+        const data = await fetchProducsFromApi();
         setProducts(data);
+      } catch (err) {
+        console.log("Error in component...", err);
       }
-
-      getData();
-    } catch (err) {
-      console.log("Error in api fetch", err);
     }
+
+    fetchData();
   }, []);
 
   useEffect(() => {
     // Initialize cart state from local storage
-    const cartProducts = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(cartProducts);
+    initializeCartProducts(setCart);
   }, []); // Only run this effect on component mount
 
   useEffect(() => {
     // Initialize cart state from local storage
-    const favProducts = JSON.parse(localStorage.getItem("favs")) || [];
-    setFavs(favProducts);
+    initializeFavProducts(setFavs);
   }, []); // Only run this effect on component mount
 
   // get products by category
